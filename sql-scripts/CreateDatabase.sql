@@ -1,0 +1,1 @@
+CREATE DATABASE IF NOT EXISTS `arquivei` COLLATE 'utf8_general_ci' ;
