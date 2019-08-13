@@ -1,7 +1,10 @@
 # Derived from official mysql image (our base image)
 FROM mysql
 # Add a database
-ENV MYSQL_DATABASE company
+ENV MYSQL_DATABASE arquivei
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=root
+ENV MYSQL_ROOT_PASSWORD=root
 # Add the content of the sql-scripts/ directory to your image
 # All scripts in docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
@@ -15,6 +18,6 @@ WORKDIR /app
 COPY . /app
 RUN composer install
 
-CMD php artisan migrate
-CMD php artisan serve --host=0.0.0.0 --port=8181
-EXPOSE 8181
+RUN php artisan migrate
+RUN php artisan serve --host=127.0.0.1 --port=8080
+EXPOSE 8080
